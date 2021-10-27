@@ -83,16 +83,11 @@ public class Main {
     private static boolean add(LinkedHashMap<String, LinkedHashMap<String, Long>> bag, long count, String type, String gem) {
         if (!bag.containsKey(type)) {
             if (bag.containsKey(gem)) {
-                if (count > bag.get("Gold").values().stream().mapToLong(e -> e).sum()) {
-                    return true;
-                }
+                return count > bag.get("Gold").values().stream().mapToLong(e -> e).sum();
             } else {
                 return true;
             }
-        } else if (bag.get(type).values().stream().
-                mapToLong(e -> e).sum() + count > bag.get(gem).values().stream().mapToLong(e -> e).sum()) {
-            return true;
-        }
-        return false;
+        } else return bag.get(type).values().stream().
+                mapToLong(e -> e).sum() + count > bag.get(gem).values().stream().mapToLong(e -> e).sum();
     }
 }
