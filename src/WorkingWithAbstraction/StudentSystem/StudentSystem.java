@@ -30,6 +30,7 @@ public class StudentSystem {
 
     private String getStudentInformation(String name) {
         Student student = this.students.get(name);
+
         if (student == null) {
             throw new IllegalArgumentException("No student with this name " + name);
         }
