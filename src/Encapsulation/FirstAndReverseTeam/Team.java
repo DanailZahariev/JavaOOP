@@ -9,12 +9,12 @@ import java.util.List;
 public class Team {
     private String name;
     private List<Person> firstTeam;
-    private List<Person> reverseTeam;
+    private List<Person> reserveTeam;
 
     public Team(String name) {
         this.name = name;
         this.firstTeam = new ArrayList<>();
-        this.reverseTeam = new ArrayList<>();
+        this.reserveTeam = new ArrayList<>();
     }
 
     public String getName() {
@@ -29,15 +29,15 @@ public class Team {
         if (person.getAge() < 40) {
             this.firstTeam.add(person);
         } else {
-            this.reverseTeam.add(person);
+            this.reserveTeam.add(person);
         }
     }
 
     public List<Person> getFirstTeam() {
-        return Collections.unmodifiableList(firstTeam);
+        return Collections.unmodifiableList(this.firstTeam);
     }
 
-    public List<Person> getReverseTeam() {
-        return Collections.unmodifiableList(reverseTeam);
+    public List<Person> getReserveTeam() {
+        return Collections.unmodifiableList(this.reserveTeam);
     }
 }

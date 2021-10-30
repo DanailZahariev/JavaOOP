@@ -8,7 +8,7 @@ public class Person {
 
     public Person(String firstName, String lastName, int age, double salary) {
         this.setFirstName(firstName);
-        this.lastName(lastName);
+        this.setLastName(lastName);
         this.setAge(age);
         this.setSalary(salary);
     }
@@ -17,10 +17,11 @@ public class Person {
         if (age <= 0) {
             throw new IllegalArgumentException("Age cannot be zero or negative integer");
         }
+
         this.age = age;
     }
 
-    private void lastName(String lastName) {
+    private void setLastName(String lastName) {
         ensureNameLength(lastName, "Last");
         this.lastName = lastName;
     }
@@ -32,7 +33,7 @@ public class Person {
 
     private void ensureNameLength(String nameParam, String messagePrefix) {
         if (nameParam.length() < 3) {
-            throw new IllegalArgumentException("First name cannot be less than 3 symbols");
+            throw new IllegalArgumentException(messagePrefix + " name cannot be less than 3 symbols");
         }
     }
 
@@ -60,6 +61,7 @@ public class Person {
         if (salary < 460) {
             throw new IllegalArgumentException("Salary cannot be less than 460 leva");
         }
+
         this.salary = salary;
     }
 

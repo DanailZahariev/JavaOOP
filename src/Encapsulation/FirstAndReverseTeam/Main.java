@@ -27,6 +27,6 @@ public class Main {
         }
 
         System.out.println("First team have " + team.getFirstTeam().size() + " players");
-        System.out.println("First team have " + team.getReverseTeam().size() + " players");
+        System.out.println("First team have " + team.getReserveTeam().size() + " players");
     }
 }
