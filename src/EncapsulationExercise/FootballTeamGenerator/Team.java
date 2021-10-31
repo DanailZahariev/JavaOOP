@@ -28,18 +28,16 @@ public class Team {
         this.players.add(player);
     }
 
+
     public void removePlayer(String playerName) {
-        boolean removeIf = this.players.removeIf(player -> player.getName().equals(playerName));
-        if (!removeIf) {
-            throw new IllegalArgumentException("Player " + playerName + " is not in " + name + " team.");
-        }
+        this.players.removeIf(player -> player.getName().equals(playerName));
     }
 
     public double getRating() {
-        return players.stream().mapToDouble(Player::overallSkillLevel).average().orElse(0.00);
+        return players.stream().mapToDouble(Player::overallSkillLevel).average().orElse(0);
     }
 
     public boolean hasPlayer(String name) {
-        return players.stream().anyMatch(player -> name.equals(player.getName()));
+        return players.stream().anyMatch(player -> player.getName().equals(name));
     }
 }
