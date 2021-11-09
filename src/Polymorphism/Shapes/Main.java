@@ -1,0 +1,25 @@
+package Polymorphism.Shapes;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        Shape shape = new Rectangle(13.00, 2.00);
+        Shape shape2 = new Circle(3D);
+
+        List<Shape> shapes = new ArrayList<>();
+        shapes.add(shape);
+        shapes.add(shape2);
+
+        shapes.forEach(shape1 -> {
+            System.out.println(shape1.getPerimeter());
+            System.out.println(shape1.getArea());
+        });
+
+    }
+}

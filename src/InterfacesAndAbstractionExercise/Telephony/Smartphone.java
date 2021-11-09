@@ -1,6 +1,8 @@
 package InterfacesAndAbstractionExercise.Telephony;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Smartphone implements Browsable, Callable {
 
@@ -15,42 +17,34 @@ public class Smartphone implements Browsable, Callable {
     @Override
     public String call() {
         StringBuilder stringBuilder = new StringBuilder();
-        boolean validNumber = true;
+        Pattern pattern = Pattern.compile("^[0-9]+$");
         for (String number : numbers) {
-            char[] chars = number.toCharArray();
-            for (char symbol : chars) {
-                if (!Character.isDigit(symbol)) {
-                    stringBuilder.append("Invalid number!").append(System.lineSeparator());
-                    validNumber = false;
-                    break;
-                }
-            }
-            if (validNumber) {
-                stringBuilder.append("Calling... ").append(number).append(System.lineSeparator());
+            Matcher matcher = pattern.matcher(number);
+            if (matcher.find()) {
+                stringBuilder.append("Calling... ").append(number)
+                        .append(System.lineSeparator());
+            } else {
+                stringBuilder.append("Invalid number!").append(System.lineSeparator());
             }
         }
-        return stringBuilder.toString();
+        return stringBuilder.toString().trim();
     }
 
 
     @Override
     public String browse() {
         StringBuilder stringBuilder = new StringBuilder();
-        boolean validUrl = true;
+        Pattern pattern = Pattern.compile("^[^0-9]+$");
         for (String url : urls) {
-            char[] chars = url.toCharArray();
-            for (char symbol : chars) {
-                if (Character.isDigit(symbol)) {
-                    stringBuilder.append("Invalid URL!").append(System.lineSeparator());
-                    validUrl = false;
-                    break;
-                }
-            }
-            if (validUrl) {
-                stringBuilder.append("Browsing: ").append(url).append("!").append(System.lineSeparator());
+            Matcher matcher = pattern.matcher(url);
+            if (matcher.find()) {
+                stringBuilder.append("Browsing: ").append(url)
+                        .append(System.lineSeparator());
+            } else {
+                stringBuilder.append("Invalid URL!").append(System.lineSeparator());
             }
         }
-        return stringBuilder.toString();
+        return stringBuilder.toString().trim();
     }
 }
 

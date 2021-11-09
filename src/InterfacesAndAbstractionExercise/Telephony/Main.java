@@ -19,7 +19,7 @@ public class Main {
 
         Smartphone smartphone = new Smartphone(numbers, urls);
 
-        System.out.print(smartphone.call());
-        System.out.print(smartphone.browse());
+        System.out.println(smartphone.call());
+        System.out.println(smartphone.browse());
     }
 }
