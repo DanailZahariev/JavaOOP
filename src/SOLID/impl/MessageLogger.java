@@ -4,6 +4,8 @@ import SOLID.enums.ReportLevel;
 import SOLID.interfaces.Appender;
 import SOLID.interfaces.Logger;
 
+import java.util.Arrays;
+
 
 public class MessageLogger implements Logger {
 
@@ -39,17 +41,15 @@ public class MessageLogger implements Logger {
         log(time, message, ReportLevel.FATAL);
     }
 
-    private void log(String time, String message, ReportLevel reportLevel){
-        for(Appender appender : appenders){
-            appender.append(time, message, reportLevel);
-        }
+    private void log(String time, String message, ReportLevel reportLevel) {
+        Arrays.stream(appenders).forEach(appender1 -> appender1.append(time, message, reportLevel));
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Logger info");
         sb.append(System.lineSeparator());
-        for (Appender appender : appenders){
+        for (Appender appender : appenders) {
             sb.append(appender);
             sb.append(System.lineSeparator());
         }
@@ -57,3 +57,4 @@ public class MessageLogger implements Logger {
         return sb.toString();
     }
 }
+
