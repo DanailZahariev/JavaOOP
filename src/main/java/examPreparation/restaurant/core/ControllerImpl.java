@@ -41,11 +41,10 @@ public class ControllerImpl implements Controller {
     @Override
     public String addHealthyFood(String type, double price, String name) {
         HealthyFood healthyFood;
-        HealthyFoodType healthyFoodType = HealthyFoodType.valueOf(type);
-        if (healthyFoodType.equals(HealthyFoodType.Salad)) {
+        if (HealthyFoodType.valueOf(type).equals(HealthyFoodType.Salad)) {
             healthyFood = new Salad(name, price);
             return addFoodToRepository(name, healthyFood);
-        } else if (healthyFoodType.equals(HealthyFoodType.VeganBiscuits)) {
+        } else if (HealthyFoodType.valueOf(type).equals(HealthyFoodType.VeganBiscuits)) {
             healthyFood = new VeganBiscuits(name, price);
             return addFoodToRepository(name, healthyFood);
         }
@@ -64,11 +63,10 @@ public class ControllerImpl implements Controller {
     @Override
     public String addBeverage(String type, int counter, String brand, String name) {
         Beverages beverages;
-        BeveragesType beveragesType = BeveragesType.valueOf(type);
-        if (beveragesType.equals(BeveragesType.Fresh)) {
+        if (BeveragesType.valueOf(type).equals(BeveragesType.Fresh)) {
             beverages = new Fresh(name, counter, brand);
             return addBeverageToRepository(name, brand, beverages);
-        } else if (beveragesType.equals(BeveragesType.Smoothie)) {
+        } else if (BeveragesType.valueOf(type).equals(BeveragesType.Smoothie)) {
             beverages = new Smoothie(name, counter, brand);
             return addBeverageToRepository(name, brand, beverages);
         }
@@ -86,11 +84,10 @@ public class ControllerImpl implements Controller {
     @Override
     public String addTable(String type, int tableNumber, int capacity) {
         Table table;
-        TableType tableType = TableType.valueOf(type);
-        if (tableType.equals(TableType.Indoors)) {
+        if (TableType.valueOf(type).equals(TableType.Indoors)) {
             table = new Indoors(tableNumber, capacity);
             return addTableToRepository(tableNumber, table);
-        } else if (tableType.equals(TableType.InGarden)) {
+        } else if (TableType.valueOf(type).equals(TableType.InGarden)) {
             table = new InGarden(tableNumber, capacity);
             return addTableToRepository(tableNumber, table);
         }
