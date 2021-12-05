@@ -99,8 +99,8 @@ public abstract class BaseTable implements Table {
 
     @Override
     public void clear() {
-        this.healthyFood = new ArrayList<>();
-        this.beverages = new ArrayList<>();
+        this.healthyFood.clear();
+        this.beverages.clear();
         this.isReservedTable = false;
         this.numberOfPeople = 0;
         this.allPeople = 0;
