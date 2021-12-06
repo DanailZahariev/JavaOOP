@@ -2,37 +2,38 @@ package glacialExpedition.repositories;
 
 import glacialExpedition.models.explorers.Explorer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class ExplorerRepository implements Repository<Explorer> {
 
-    private List<Explorer> explorers;
+    //    private List<Explorer> explorers;
+    private Map<String, Explorer> explorers;
 
     public ExplorerRepository() {
-        this.explorers = new ArrayList<>();
+        this.explorers = new LinkedHashMap<>();
     }
 
     @Override
-    public List<Explorer> getCollection() {
-        return Collections.unmodifiableList(this.explorers);
+    public Collection<Explorer> getCollection() {
+        return Collections.unmodifiableCollection(this.explorers.values());
+//        return Collections.unmodifiableCollection(this.explorers);
     }
 
     @Override
     public void add(Explorer entity) {
-        if (explorers.stream().noneMatch(e -> e.getName().equals(entity.getName()))) {
-            explorers.add(entity);
-        }
+        explorers.put(entity.getName(), entity);
+//        explorers.add(entity);
     }
 
     @Override
     public boolean remove(Explorer entity) {
-        return this.explorers.remove(entity);
+        return explorers.remove(entity.getName()) != null;
+//        return this.explorers.remove(entity);
     }
 
     @Override
     public Explorer byName(String name) {
-        return explorers.stream().filter(explorer -> explorer.getName().equals(name)).findFirst().orElse(null);
+        return explorers.get(name);
+//        return explorers.stream().filter(explorer -> explorer.getName().equals(name)).findFirst().orElse(null);
     }
 }

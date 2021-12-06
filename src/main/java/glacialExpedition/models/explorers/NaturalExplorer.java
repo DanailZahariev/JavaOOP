@@ -10,7 +10,10 @@ public class NaturalExplorer extends BaseExplorer {
 
     @Override
     public void search() {
-        setEnergy(this.getEnergy() - 7);
-
+        if (getEnergy() <= 7) {
+            this.setEnergy(0);
+        } else {
+            this.setEnergy(this.getEnergy() - 7);
+        }
     }
 }

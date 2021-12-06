@@ -1,9 +1,9 @@
 package glacialExpedition.repositories;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface Repository<T> {
-    List<T> getCollection();
+    Collection<T> getCollection();
 
     void add(T entity);
 

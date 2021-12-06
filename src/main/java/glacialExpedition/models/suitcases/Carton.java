@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Carton implements Suitcase {
 
-    List<String> exhibits;
+   private Collection<String> exhibits;
 
     public Carton() {
         this.exhibits = new ArrayList<>();
@@ -14,6 +14,6 @@ public class Carton implements Suitcase {
 
     @Override
     public Collection<String> getExhibits() {
-        return exhibits;
+        return this.exhibits;
     }
 }

@@ -18,14 +18,14 @@ public abstract class BaseExplorer implements Explorer {
         this.suitcase = new Carton();
     }
 
-    public void setEnergy(double energy) {
+    protected void setEnergy(double energy) {
         if (energy < 0) {
             throw new IllegalArgumentException(EXPLORER_ENERGY_LESS_THAN_ZERO);
         }
         this.energy = energy;
     }
 
-    public void setName(String name) {
+    protected void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new NullPointerException(EXPLORER_NAME_NULL_OR_EMPTY);
         }
@@ -54,9 +54,10 @@ public abstract class BaseExplorer implements Explorer {
 
     @Override
     public void search() {
-        setEnergy(getEnergy() - 15);
-        if (energy < 0) {
-            setEnergy(0);
+        if (this.energy <= 15) {
+            this.energy = 0;
+        } else {
+            this.energy -= 15;
         }
     }
 }

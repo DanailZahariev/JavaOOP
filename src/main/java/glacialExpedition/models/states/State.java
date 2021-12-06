@@ -1,9 +1,9 @@
 package glacialExpedition.models.states;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface State {
-    List<String> getExhibits();
+    Collection<String> getExhibits();
 
     String getName();
 }

@@ -1,14 +1,14 @@
 package glacialExpedition.models.states;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import static glacialExpedition.common.ExceptionMessages.STATE_NAME_NULL_OR_EMPTY;
 
 public class StateImpl implements State {
 
     private String name;
-    private List<String> exhibits;
+    private Collection<String> exhibits;
 
     public StateImpl(String name) {
         setName(name);
@@ -23,7 +23,7 @@ public class StateImpl implements State {
     }
 
     @Override
-    public List<String> getExhibits() {
+    public Collection<String> getExhibits() {
         return exhibits;
     }
 
