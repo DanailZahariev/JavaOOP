@@ -1,6 +1,6 @@
-package glacialExpedition.core;
+package examPreparation.glacialExpedition.core;
 
-import glacialExpedition.common.Command;
+import examPreparation.glacialExpedition.common.Command;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,8 +1,7 @@
-package glacialExpedition.models.suitcases;
+package examPreparation.glacialExpedition.models.suitcases;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class Carton implements Suitcase {
 

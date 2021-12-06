@@ -1,24 +1,23 @@
-package glacialExpedition.core;
+package examPreparation.glacialExpedition.core;
 
-import glacialExpedition.models.explorers.AnimalExplorer;
-import glacialExpedition.models.explorers.Explorer;
-import glacialExpedition.models.explorers.GlacierExplorer;
-import glacialExpedition.models.explorers.NaturalExplorer;
-import glacialExpedition.models.mission.Mission;
-import glacialExpedition.models.mission.MissionImpl;
-import glacialExpedition.models.states.State;
-import glacialExpedition.models.states.StateImpl;
-import glacialExpedition.repositories.ExplorerRepository;
-import glacialExpedition.repositories.Repository;
-import glacialExpedition.repositories.StateRepository;
+import examPreparation.glacialExpedition.common.ConstantMessages;
+import examPreparation.glacialExpedition.common.ExceptionMessages;
+import examPreparation.glacialExpedition.models.explorers.AnimalExplorer;
+import examPreparation.glacialExpedition.models.explorers.GlacierExplorer;
+import examPreparation.glacialExpedition.models.mission.MissionImpl;
+import examPreparation.glacialExpedition.models.states.StateImpl;
+import examPreparation.glacialExpedition.repositories.ExplorerRepository;
+import examPreparation.glacialExpedition.repositories.StateRepository;
+import examPreparation.glacialExpedition.models.explorers.Explorer;
+import examPreparation.glacialExpedition.models.explorers.NaturalExplorer;
+import examPreparation.glacialExpedition.models.mission.Mission;
+import examPreparation.glacialExpedition.models.states.State;
+import examPreparation.glacialExpedition.repositories.Repository;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static glacialExpedition.common.ConstantMessages.*;
-import static glacialExpedition.common.ExceptionMessages.*;
 
 public class ControllerImpl implements Controller {
 
@@ -45,10 +44,10 @@ public class ControllerImpl implements Controller {
                 explorer = new NaturalExplorer(explorerName);
                 break;
             default:
-                throw new IllegalArgumentException(EXPLORER_INVALID_TYPE);
+                throw new IllegalArgumentException(ExceptionMessages.EXPLORER_INVALID_TYPE);
         }
         explorerRepository.add(explorer);
-        return String.format(EXPLORER_ADDED, type, explorerName);
+        return String.format(ConstantMessages.EXPLORER_ADDED, type, explorerName);
     }
 
     @Override
@@ -57,24 +56,24 @@ public class ControllerImpl implements Controller {
         Collection<String> stateExhibits = state.getExhibits();
         Collections.addAll(stateExhibits, exhibits);
         this.stateRepository.add(state);
-        return String.format(STATE_ADDED, stateName);
+        return String.format(ConstantMessages.STATE_ADDED, stateName);
     }
 
     @Override
     public String retireExplorer(String explorerName) {
         Explorer explorer = explorerRepository.byName(explorerName);
         if (explorer == null) {
-            throw new IllegalArgumentException(String.format(EXPLORER_DOES_NOT_EXIST, explorerName));
+            throw new IllegalArgumentException(String.format(ExceptionMessages.EXPLORER_DOES_NOT_EXIST, explorerName));
         }
         explorerRepository.remove(explorer);
-        return String.format(EXPLORER_RETIRED, explorerName);
+        return String.format(ConstantMessages.EXPLORER_RETIRED, explorerName);
     }
 
     @Override
     public String exploreState(String stateName) {
         List<Explorer> explorers = explorerRepository.getCollection().stream().filter(e -> e.getEnergy() > 50).collect(Collectors.toList());
         if (explorers.isEmpty()) {
-            throw new IllegalArgumentException(STATE_EXPLORERS_DOES_NOT_EXISTS);
+            throw new IllegalArgumentException(ExceptionMessages.STATE_EXPLORERS_DOES_NOT_EXISTS);
         }
 
         State state = stateRepository.byName(stateName);
@@ -82,25 +81,25 @@ public class ControllerImpl implements Controller {
         mission.explore(state, explorers);
         long retired = explorers.stream().filter(e -> e.getEnergy() == 0).count();
         this.exploredStates++;
-        return String.format(STATE_EXPLORER, stateName, retired);
+        return String.format(ConstantMessages.STATE_EXPLORER, stateName, retired);
     }
 
     @Override
     public String finalResult() {
         StringBuilder builder = new StringBuilder();
-        builder.append(String.format(FINAL_STATE_EXPLORED, this.exploredStates)).append(System.lineSeparator());
-        builder.append(FINAL_EXPLORER_INFO);
+        builder.append(String.format(ConstantMessages.FINAL_STATE_EXPLORED, this.exploredStates)).append(System.lineSeparator());
+        builder.append(ConstantMessages.FINAL_EXPLORER_INFO);
         Collection<Explorer> explorers = this.explorerRepository.getCollection();
         for (Explorer explorer : explorers) {
             builder.append(System.lineSeparator());
-            builder.append(String.format(FINAL_EXPLORER_NAME, explorer.getName()));
+            builder.append(String.format(ConstantMessages.FINAL_EXPLORER_NAME, explorer.getName()));
             builder.append(System.lineSeparator());
-            builder.append(String.format(FINAL_EXPLORER_ENERGY, explorer.getEnergy()));
+            builder.append(String.format(ConstantMessages.FINAL_EXPLORER_ENERGY, explorer.getEnergy()));
             builder.append(System.lineSeparator());
             if (explorer.getSuitcase().getExhibits().isEmpty()) {
-                builder.append(String.format(FINAL_EXPLORER_SUITCASE_EXHIBITS, "None"));
+                builder.append(String.format(ConstantMessages.FINAL_EXPLORER_SUITCASE_EXHIBITS, "None"));
             } else {
-                builder.append(String.format(FINAL_EXPLORER_SUITCASE_EXHIBITS, String.join(FINAL_EXPLORER_SUITCASE_EXHIBITS_DELIMITER, explorer.getSuitcase().getExhibits())));
+                builder.append(String.format(ConstantMessages.FINAL_EXPLORER_SUITCASE_EXHIBITS, String.join(ConstantMessages.FINAL_EXPLORER_SUITCASE_EXHIBITS_DELIMITER, explorer.getSuitcase().getExhibits())));
             }
         }
         return builder.toString().trim();

@@ -1,4 +1,4 @@
-package glacialExpedition.models.states;
+package examPreparation.glacialExpedition.models.states;
 
 import java.util.Collection;
 

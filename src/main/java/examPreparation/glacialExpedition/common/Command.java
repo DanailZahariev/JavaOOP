@@ -1,4 +1,4 @@
-package glacialExpedition.common;
+package examPreparation.glacialExpedition.common;
 
 public enum Command {
     AddExplorer,

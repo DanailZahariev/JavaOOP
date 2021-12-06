@@ -1,4 +1,4 @@
-package glacialExpedition.models.explorers;
+package examPreparation.glacialExpedition.models.explorers;
 
 public class GlacierExplorer extends BaseExplorer {
 

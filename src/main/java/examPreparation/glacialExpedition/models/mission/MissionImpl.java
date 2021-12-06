@@ -1,7 +1,7 @@
-package glacialExpedition.models.mission;
+package examPreparation.glacialExpedition.models.mission;
 
-import glacialExpedition.models.explorers.Explorer;
-import glacialExpedition.models.states.State;
+import examPreparation.glacialExpedition.models.explorers.Explorer;
+import examPreparation.glacialExpedition.models.states.State;
 
 import java.util.Collection;
 

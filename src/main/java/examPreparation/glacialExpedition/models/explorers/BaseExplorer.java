@@ -1,9 +1,8 @@
-package glacialExpedition.models.explorers;
+package examPreparation.glacialExpedition.models.explorers;
 
-import glacialExpedition.models.suitcases.Carton;
-import glacialExpedition.models.suitcases.Suitcase;
-
-import static glacialExpedition.common.ExceptionMessages.*;
+import examPreparation.glacialExpedition.common.ExceptionMessages;
+import examPreparation.glacialExpedition.models.suitcases.Carton;
+import examPreparation.glacialExpedition.models.suitcases.Suitcase;
 
 
 public abstract class BaseExplorer implements Explorer {
@@ -20,14 +19,14 @@ public abstract class BaseExplorer implements Explorer {
 
     protected void setEnergy(double energy) {
         if (energy < 0) {
-            throw new IllegalArgumentException(EXPLORER_ENERGY_LESS_THAN_ZERO);
+            throw new IllegalArgumentException(ExceptionMessages.EXPLORER_ENERGY_LESS_THAN_ZERO);
         }
         this.energy = energy;
     }
 
     protected void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new NullPointerException(EXPLORER_NAME_NULL_OR_EMPTY);
+            throw new NullPointerException(ExceptionMessages.EXPLORER_NAME_NULL_OR_EMPTY);
         }
         this.name = name;
     }

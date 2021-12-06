@@ -1,4 +1,4 @@
-package glacialExpedition.core;
+package examPreparation.glacialExpedition.core;
 
 public interface Controller {
     String addExplorer(String type, String explorerName);

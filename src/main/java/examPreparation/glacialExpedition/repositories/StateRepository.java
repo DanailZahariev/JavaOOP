@@ -1,6 +1,6 @@
-package glacialExpedition.repositories;
+package examPreparation.glacialExpedition.repositories;
 
-import glacialExpedition.models.states.State;
+import examPreparation.glacialExpedition.models.states.State;
 
 import java.util.*;
 

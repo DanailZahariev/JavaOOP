@@ -1,4 +1,4 @@
-package glacialExpedition.repositories;
+package examPreparation.glacialExpedition.repositories;
 
 import java.util.Collection;
 

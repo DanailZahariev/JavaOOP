@@ -1,6 +1,6 @@
-package glacialExpedition.models.explorers;
+package examPreparation.glacialExpedition.models.explorers;
 
-import glacialExpedition.models.suitcases.Suitcase;
+import examPreparation.glacialExpedition.models.suitcases.Suitcase;
 
 public interface Explorer {
 
