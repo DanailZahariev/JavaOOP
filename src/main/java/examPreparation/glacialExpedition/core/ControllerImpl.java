@@ -99,21 +99,10 @@ public class ControllerImpl implements Controller {
             if (explorer.getSuitcase().getExhibits().isEmpty()) {
                 builder.append(String.format(ConstantMessages.FINAL_EXPLORER_SUITCASE_EXHIBITS, "None"));
             } else {
-                builder.append(String.format(ConstantMessages.FINAL_EXPLORER_SUITCASE_EXHIBITS, String.join(ConstantMessages.FINAL_EXPLORER_SUITCASE_EXHIBITS_DELIMITER, explorer.getSuitcase().getExhibits())));
+                builder.append(String.format(ConstantMessages.FINAL_EXPLORER_SUITCASE_EXHIBITS,
+                        String.join(ConstantMessages.FINAL_EXPLORER_SUITCASE_EXHIBITS_DELIMITER, explorer.getSuitcase().getExhibits())));
             }
         }
         return builder.toString().trim();
-//        StringBuilder builder = new StringBuilder();
-//        builder.append(String.format(FINAL_STATE_EXPLORED, exploredStates)).append(System.lineSeparator());
-//        builder.append(FINAL_EXPLORER_INFO).append(System.lineSeparator());
-//        this.explorerRepository.getCollection().forEach(e -> {
-//            builder.append(String.format(FINAL_EXPLORER_NAME, e.getName())).append(System.lineSeparator());
-//            builder.append(String.format(FINAL_EXPLORER_ENERGY, e.getEnergy())).append(System.lineSeparator());
-//            if (e.getSuitcase().getExhibits().isEmpty()) {
-//                builder.append(String.format(FINAL_EXPLORER_SUITCASE_EXHIBITS, "None")).append(System.lineSeparator());
-//            } else {
-//                builder.append(String.format(FINAL_EXPLORER_SUITCASE_EXHIBITS, String.join(", ", e.getSuitcase().getExhibits()))).append(System.lineSeparator());
-//            }
-//        });
     }
 }
