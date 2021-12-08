@@ -6,10 +6,8 @@ import examPreparation.onlineShop.core.interfaces.Controller;
 import examPreparation.onlineShop.models.products.components.*;
 import examPreparation.onlineShop.models.products.computers.Computer;
 import examPreparation.onlineShop.models.products.peripherals.*;
-import onlineShop.models.products.components.*;
 import examPreparation.onlineShop.models.products.computers.DesktopComputer;
 import examPreparation.onlineShop.models.products.computers.Laptop;
-import onlineShop.models.products.peripherals.*;
 
 import java.util.Comparator;
 import java.util.LinkedHashMap;
